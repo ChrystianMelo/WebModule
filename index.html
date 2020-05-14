@@ -13,7 +13,7 @@
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 			<a class="navbar-brand" href="#">
 				<img src="/media/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
-			Bootstrap
+			Company
 			</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
@@ -35,8 +35,26 @@
 			</ul>
 			<form class="form-inline my-2 my-lg-0">
 				<input class="form-control mr-sm-2" style="visibility: hidden;" id="inputSearch" placeholder="Search" aria-label="Search">
-				<button class="btn btn-outline-success my-2 my-sm-0" id="btnSearch" type="button" onclick="changeVisibility('inputSearch')">Search</button>
-			</form>
+				<button class="btn btn-outline-success my-2 my-sm-0" id="btnSearch" type="button" onclick="changeVisibility('inputSearch')">
+					<svg class="bi bi-search" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" >
+					  <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 011.415 0l3.85 3.85a1 1 0 01-1.414 1.415l-3.85-3.85a1 1 0 010-1.415z" clip-rule="evenodd"/>
+					  <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 100-11 5.5 5.5 0 000 11zM13 6.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" clip-rule="evenodd"/>
+					</svg>
+				</button>
+				<p style="padding-left: 10px;"></p>
+				<button class="btn btn-outline-success my-2 my-sm-0" type="button" >
+					<svg class="bi bi-bag" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+					  <path fill-rule="evenodd" d="M14 5H2v9a1 1 0 001 1h10a1 1 0 001-1V5zM1 4v10a2 2 0 002 2h10a2 2 0 002-2V4H1z" clip-rule="evenodd"/>
+					  <path d="M8 1.5A2.5 2.5 0 005.5 4h-1a3.5 3.5 0 117 0h-1A2.5 2.5 0 008 1.5z"/>
+					</svg>
+				</button>
+				<p style="padding-left: 10px;"></p>
+				<button class="btn	" type="button" >
+				<svg class="bi bi-person-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+				  <path fill-rule="evenodd" d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/>
+				</svg>
+				</button>
+			</form>	
 			</div>
 		</nav>
 	</body>

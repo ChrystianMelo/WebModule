@@ -1,3 +1,9 @@
 body{
 	background-color: black;
 }
+hr{
+	background-color: #28a745;
+}
+.nav-icon{
+	padding-left: 1	0px;
+}

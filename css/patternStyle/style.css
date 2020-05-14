@@ -2,8 +2,17 @@ body{
 	background-color: black;
 }
 hr{
-	background-color: #28a745;
+	background-color: #fff;
 }
 .nav-icon{
 	padding-left: 1	0px;
 }
+.abs-center-x {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.modal-content{
+  background-color: transparent;
+}
+

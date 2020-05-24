@@ -1,45 +1,42 @@
-function changeVisibility(view) {
-	if (document.getElementById(view).style.visibility == "hidden"){
-		document.getElementById(view).style.visibility = "visible";
-	}else{
-		document.getElementById(view).style.visibility = "hidden"
-	}
+function verification(view){
+  return document.getElementById(view).value === '';
+}
+
+function setError(){
+  var text = "Input not valid!";
+  var end = true;
+  if (verification('message')){
+    document.getElementById("msg_error").innerHTML = text;
+    end = false;
+  }
+  if(verification('email')){
+    document.getElementById("mail_error").innerHTML = text;
+    end = false;
+  }
+  if(verification('name')){
+    document.getElementById("name_error").innerHTML = text;
+    end = false;
+  }
+  return end;
+}
+
+function cleanError(){
+  document.getElementById("msg_error").innerHTML = "";
+  document.getElementById("mail_error").innerHTML = "";
+  document.getElementById("name_error").innerHTML = "";
 }
 
 function sendEmail() {
-	if (document.getElementById('messageEmail').value != "" , document.getElementById('nameEmail').value != ""){
-		var subject = "[Contact by web] - " +document.getElementById('nameEmail').value+ " have a message to you!";
-		var body = document.getElementById('messageEmail').value;
-	    window.location.href = "mailto:test@example.com?subject="+subject+"&body="+body;
-	}else{
-		alert("Preencha os campos!");
-	}
-}
+  var businessMail = "test@example.com";
+  var msg = document.getElementById('message').value;
+  var mail = document.getElementById('email').value;
+  var name = document.getElementById('name').value;
+  
+  cleanError();
 
-function includeHTML() {
-  var z, i, elmnt, file, xhttp;
-  /* Loop through a collection of all HTML elements: */
-  z = document.getElementsByTagName("*");
-  for (i = 0; i < z.length; i++) {
-    elmnt = z[i];
-    /*search for elements with a certain atrribute:*/
-    file = elmnt.getAttribute("w3-include-html");
-    if (file) {
-      /* Make an HTTP request using the attribute value as the file name: */
-      xhttp = new XMLHttpRequest();
-      xhttp.onreadystatechange = function() {
-        if (this.readyState == 4) {
-          if (this.status == 200) {elmnt.innerHTML = this.responseText;}
-          if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
-          /* Remove the attribute, and call this function once more: */
-          elmnt.removeAttribute("w3-include-html");
-          includeHTML();
-        }
-      }
-      xhttp.open("GET", file, true);
-      xhttp.send();
-      /* Exit the function: */
-      return;
-    }
-  }
+  if (setError()){
+    var subject = "[Contact by web] - " + name + " have a message to you!";
+    var body    = msg + "\n Contact me by "+ mail;
+    window.location.href = "mailto:"+businessMail+"?subject="+subject+"&body="+body;
+	}
 }

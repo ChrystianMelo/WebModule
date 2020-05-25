@@ -1,4 +1,25 @@
-<?php?>
+<?php
+	$error =  "";
+
+	$connect = mysqli_connect("localhost","root","quisfi12", "webModule") OR DIE("Error connecting to the database");
+
+	if(isset($_POST["register"])) {
+		$name = $_POST['name'];
+		$mail = $_POST['mail'];
+		$pass = $_POST['pass'];
+		$cpass = $_POST['cpass'];
+		$cpf = $_POST['cpf'];
+		$nick = $_POST['nick'];
+
+		
+		$sql = "INSERT INTO login (name, email, password, cpf, nickname) VALUES ('$name','$mail','$pass','$cpf','$nick')";
+		
+		mysqli_query($connect, $sql);
+		mysqli_close($connect);
+
+	}
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,19 +43,19 @@
 
 	<div class="split right jumbotron">
 		<div class="switch6">
-			<label class="switch6-light" onclick="">
+			<label class="switch6-light">
 					<input type="checkbox">
 					<span>
-						<span>Log-In</span>
-						<span>Sign-In</span>
+						<span onclick="changeDisplay('sign','log');" >Log-In</span>
+						<span onclick="changeDisplay('log','sign');">Sign-In</span>
 					</span>
 					<a class="btn btn-primary"></a>
 			</label>
 		</div>
 		<div class="acc">
-		  	<form class="log" action="log">
+		  	<form class="log" id="log" action="log">
 				<div class="mb-3">
-					<svg class="bi bi-person-circle" width="10em" height="10em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+					<svg class="bi bi-person-circle" width="5em" height="5em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 					  <path d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z"/>
 					  <path fill-rule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
 					  <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"/>
@@ -64,9 +85,9 @@
 				<button class="btn btn-primary btn-lg">Log-In</button>
 				<p><a href="#">Forgot your password?</a></p>
 			</form>
-			<form class="sign" action="sign">
+			<form class="sign" id="sign" method="POST">
 				<div class="mb-3">
-					<svg class="bi bi-person-circle" width="10em" height="10em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+					<svg class="bi bi-person-circle" width="5em" height="5em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 					  <path d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z"/>
 					  <path fill-rule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
 					  <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"/>
@@ -80,7 +101,7 @@
 						</svg>
 				    </span>
 				  </div>
-				  <input type="text" class="form-control" placeholder="Name">
+				  <input type="name" name="name"class="form-control" placeholder="Name">
 				</div>
 				<div class="input-group mb-3">
 				  <div class="input-group-prepend">
@@ -91,7 +112,18 @@
 						</svg>
 				    </span>
 				  </div>
-				  <input type="text" class="form-control" placeholder="Email">
+				  <input type="email" name="mail"class="form-control" placeholder="Email">
+				</div>
+				<div class="input-group mb-3">
+				  <div class="input-group-prepend">
+				    <span class="input-group-text" id="basic-addon1">
+				    	<svg class="bi bi-check2-all" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+						  <path fill-rule="evenodd" d="M12.354 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+						  <path d="M6.25 8.043l-.896-.897a.5.5 0 1 0-.708.708l.897.896.707-.707zm1 2.414l.896.897a.5.5 0 0 0 .708 0l7-7a.5.5 0 0 0-.708-.708L8.5 10.293l-.543-.543-.707.707z"/>
+						</svg>
+				    </span>
+				  </div>
+				  <input type="text" name="cpf" class="form-control cpf-mask" placeholder="CPF">
 				</div>
 				<div class="input-group mb-3">
 				  <div class="input-group-prepend">
@@ -101,7 +133,7 @@
 						</svg>
 				    </span>
 				  </div>
-				  <input type="text" class="form-control" placeholder="Username">
+				  <input type="name" name="nick"class="form-control" placeholder="Username">
 				</div>
 				<div class="input-group mb-3">
 				  <div class="input-group-prepend">
@@ -112,7 +144,7 @@
 						</svg>
 				    </span>
 				  </div>
-				  <input type="text" class="form-control" placeholder="Password">
+				  <input type="password" name="pass"class="form-control" placeholder="Password">
 				</div>
 				<div class="input-group mb-3">
 				  <div class="input-group-prepend">
@@ -123,9 +155,9 @@
 						</svg>
 				    </span>
 				  </div>
-				  <input type="text" class="form-control" placeholder="Confirm Password">
+				  <input type="password" name="cpass"class="form-control" placeholder="Confirm Password">
 				</div>
-				<button class="btn btn-primary btn-lg">Sign-In</button>
+				<input class="btn btn-primary btn-lg" type="submit" name="register" value="Sign-In">
 			</form>
 		</div>
 	</div>
@@ -137,4 +169,3 @@
 	?>
 </body>
 </html>
-''

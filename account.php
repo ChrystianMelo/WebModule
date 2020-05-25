@@ -1,7 +1,7 @@
 <?php
 	$error =  "";
 
-	$connect = mysqli_connect("localhost","root","password", "webModule") OR DIE("Error connecting to the database");
+	$connect = mysqli_connect("localhost","root","", "webModule") OR DIE("Error connecting to the database");
 
 	if(isset($_POST["register"])) {
 		$name = $_POST['name'];

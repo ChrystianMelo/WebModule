@@ -60,15 +60,15 @@
 				  <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 100-11 5.5 5.5 0 000 11zM13 6.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" clip-rule="evenodd"/>
 				</svg>
 			</button>
-			<p style="padding-left: 10px;"></p>
+			<!--p style="padding-left: 10px;"></p>
 			<button class="btn btn-outline-success my-2 my-sm-0" type="button" >
 				<svg class="bi bi-bag" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 				  <path fill-rule="evenodd" d="M14 5H2v9a1 1 0 001 1h10a1 1 0 001-1V5zM1 4v10a2 2 0 002 2h10a2 2 0 002-2V4H1z" clip-rule="evenodd"/>
 				  <path d="M8 1.5A2.5 2.5 0 005.5 4h-1a3.5 3.5 0 117 0h-1A2.5 2.5 0 008 1.5z"/>
 				</svg>
-			</button>
+			</button-->
 			<p style="padding-left: 10px;"></p>
-			<button class="btn btn-outline-success my-2 my-sm-0" type="button" >
+			<button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="location.href='account.php'">
 			<svg class="bi bi-person-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 			  <path fill-rule="evenodd" d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/>
 			</svg>

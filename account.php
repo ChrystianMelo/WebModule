@@ -3,7 +3,14 @@
 
 	$connect = mysqli_connect("localhost","root","password", "webModule") OR DIE("Error connecting to the database");
 
-	if(isset($_POST["register"])) {
+	$mailGet = "SELECT email FROM login";
+	$mailRow = mysqli_query($connect,$mailGet);
+	$cpfGet = "SELECT cpf FROM login";
+	$cpfRow = mysqli_query($connect,$cpfGet);
+	$nickGet = "SELECT nickname FROM login";
+	$nickRow = mysqli_query($connect,$nickGet);
+
+	if(isset($_POST["sign"])) {
 		$name = $_POST['name'];
 		$mail = $_POST['mail'];
 		$pass = $_POST['pass'];
@@ -13,9 +20,61 @@
 
 		$sql = "INSERT INTO login (name, email, password, cpf, nickname) VALUES ('$name','$mail','$pass','$cpf','$nick')";
 
-		if(!strcmp($mail,"") == 0) 
+		$verificated = true;
+		while($line = mysqli_fetch_array($mailRow)){
+			if($mail == $line['email']) $verificated=false;
+		}
+		while($line = mysqli_fetch_array($cpfRow)){
+			if($cpf == $line['cpf']) $verificated=false;
+		}
+		while($line = mysqli_fetch_array($nickRow)){
+			if($nick == $line['nickname']) $verificated=false;
+		}
+		if($pass != $cpass)
+			$verificated = false;
+		if( $name == "" || 
+			$mail == "" ||
+			$pass == "" ||
+			$cpf  == "" ||
+			$nick == "")
+			$verificated = false;
+		if (strpos($nick, '@') !== false) $verificated = false;
+
+		if($verificated == true)
 			mysqli_query($connect, $sql);
 
+		mysqli_close($connect);
+	}
+
+	if(isset($_GET["log"])){
+		$username = $_GET['username'];
+		$userpass = $_GET['userpass'];
+
+		$typeInput   = "";
+		$found       = "";
+
+		while($line = mysqli_fetch_array($mailRow)){
+			if($username == $line['email']){
+				$typeInput = "email";
+				$found     = $line['email'];
+			}
+		}
+		if($found == ""){
+			while($line = mysqli_fetch_array($nickRow)){
+				if($username == $line['nickname']){
+					$typeInput = "nickname";
+					$found     = $line['nickname'];
+				}
+			}
+		}
+		if($found != ""){
+			$passGet = "SELECT password FROM login WHERE ".$typeInput." = '".$found."'" ;
+			$passRow = mysqli_query($connect,$passGet);
+			$line = mysqli_fetch_array($passRow);
+			if($userpass == $line['password']){
+				echo "<script>window.location = 'profile.php'</script>";
+			}
+		}
 		mysqli_close($connect);
 	}
 
@@ -53,7 +112,7 @@
 			</label>
 		</div>
 		<div class="acc">
-		  	<form class="log" id="log" action="log">
+		  	<form class="log" id="log" method="GET">
 				<div class="mb-3">
 					<svg class="bi bi-person-circle" width="5em" height="5em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 					  <path d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z"/>
@@ -69,7 +128,7 @@
 						</svg>
 				    </span>
 				  </div>
-				  <input type="text" class="form-control" placeholder="Email or username">
+				  <input type="text" class="form-control" name="username"placeholder="Email or username">
 				</div>
 				<div class="input-group mb-3">
 				  <div class="input-group-prepend">
@@ -80,9 +139,9 @@
 						</svg>
 				    </span>
 				  </div>
-				  <input type="text" class="form-control" placeholder="Password">
+				  <input type="password" class="form-control" name="userpass" placeholder="Password">
 				</div>
-				<button class="btn btn-primary btn-lg">Log-In</button>
+				<input class="btn btn-primary btn-lg" type="submit" name="log" value="Log-In">
 				<p><a href="#">Forgot your password?</a></p>
 			</form>
 			<form class="sign" id="sign" method="POST">
@@ -175,7 +234,8 @@
 				<div class="mb-3">
 				  <p class="alert-danger" id="cpass_error"></p>
 				</div>
-				<input class="btn btn-primary btn-lg" type="submit" name="register" value="Sign-In">
+				<input class="btn btn-primary btn-lg" type="submit" name="sign" value="Sign-In">
+				
 			</form>
 		</div>
 	</div>

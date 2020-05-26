@@ -60,6 +60,18 @@
 				  <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 100-11 5.5 5.5 0 000 11zM13 6.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" clip-rule="evenodd"/>
 				</svg>
 			</button>
+			<p style="padding-left: 10px;"></p>
+			<div class="dropdown" style="float:right;">
+				<button class="btn btn-outline-success my-2 my-sm-0 dropbtn" type="button">
+					<svg class="bi bi-person-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+					  <path fill-rule="evenodd" d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/>
+					</svg>
+				</button>
+				<div class="dropdown-content">
+					<a style="color:black;text-decoration: none;" href="signup.php">SignIn</a>
+					<a style="color:black;text-decoration: none;" href="signin.php">LogIn </a>
+				</div>
+			</div>
 			<!--p style="padding-left: 10px;"></p>
 			<button class="btn btn-outline-success my-2 my-sm-0" type="button" >
 				<svg class="bi bi-bag" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -67,12 +79,6 @@
 				  <path d="M8 1.5A2.5 2.5 0 005.5 4h-1a3.5 3.5 0 117 0h-1A2.5 2.5 0 008 1.5z"/>
 				</svg>
 			</button-->
-			<p style="padding-left: 10px;"></p>
-			<button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="location.href='account.php'">
-			<svg class="bi bi-person-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-			  <path fill-rule="evenodd" d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/>
-			</svg>
-			</button>
 		</form>	
 		</div>
 	</nav>

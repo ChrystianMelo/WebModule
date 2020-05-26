@@ -1,3 +1,5 @@
+$("#modalStatus").modal({ show : true });
+
 function setError(view){
   var text = "Input not valid!";
   document.getElementById(view).innerHTML = text;
@@ -34,28 +36,6 @@ function sendEmail() {
     if(!verify('name'))     setError('name_error');
   }
 }
-
-function signIn(){
-  cleanError('name_error');
-  cleanError('mail_error');
-  cleanError('cpf_error');
-  cleanError('nick_error');
-  cleanError('pass_error');
-  cleanError('cpass_error');
-
-  if(!verify('name'))       setError('name_error');
-  if(!verify('mail'))       setError('mail_error');
-  if(!verify('cpf'))        setError('cpf_error');
-  if(!verify('nick'))       setError('nick_error');
-  if(!verify('pass'))       setError('pass_error');
-  if(!verify('cpass'), !compareByID('pass', 'cpass')) 
-                            setError('cpass_error');
-}
-
-function logIn(){
-
-}
-
 
 function changeDisplay(view1,view2){
   //var statev1 = document.getElementById(view1).style.visibility;

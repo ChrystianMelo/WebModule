@@ -1,7 +1,7 @@
 <?php
-	$error =  "";
+	$result = "nothing";
 
-	$connect = mysqli_connect("localhost","root","", "webModule") OR DIE("Error connecting to the database");
+	$connect = mysqli_connect("localhost","root","password", "webModule") OR DIE("Error connecting to the database");
 
 	if(isset($_POST["register"])) {
 		$name = $_POST['name'];
@@ -11,12 +11,12 @@
 		$cpf = $_POST['cpf'];
 		$nick = $_POST['nick'];
 
-		
 		$sql = "INSERT INTO login (name, email, password, cpf, nickname) VALUES ('$name','$mail','$pass','$cpf','$nick')";
-		
-		mysqli_query($connect, $sql);
-		mysqli_close($connect);
 
+		if(!strcmp($mail,"") == 0) 
+			mysqli_query($connect, $sql);
+
+		mysqli_close($connect);
 	}
 
 ?>
@@ -46,7 +46,7 @@
 			<label class="switch6-light">
 					<input type="checkbox">
 					<span>
-						<span onclick="changeDisplay('sign','log');" >Log-In</span>
+						<span onclick="changeDisplay('sign','log');">Log-In</span>
 						<span onclick="changeDisplay('log','sign');">Sign-In</span>
 					</span>
 					<a class="btn btn-primary"></a>
@@ -101,7 +101,10 @@
 						</svg>
 				    </span>
 				  </div>
-				  <input type="name" name="name"class="form-control" placeholder="Name">
+				  <input type="name" id="name" name="name" class="form-control" placeholder="Name">
+				</div>
+				<div class="mb-3">
+				  <p class="alert-danger" id="name_error"></p>
 				</div>
 				<div class="input-group mb-3">
 				  <div class="input-group-prepend">
@@ -112,7 +115,10 @@
 						</svg>
 				    </span>
 				  </div>
-				  <input type="email" name="mail"class="form-control" placeholder="Email">
+				  <input type="email" id="mail" name="mail"class="form-control" placeholder="Email">
+				</div>
+				<div class="mb-3">
+				  <p class="alert-danger" id="mail_error"></p>
 				</div>
 				<div class="input-group mb-3">
 				  <div class="input-group-prepend">
@@ -123,7 +129,10 @@
 						</svg>
 				    </span>
 				  </div>
-				  <input type="text" name="cpf" class="form-control cpf-mask" placeholder="CPF">
+				  <input type="text" id="cpf" name="cpf"class="form-control cpf-mask" placeholder="CPF">
+			    </div>
+				<div class="mb-3">
+				  <p class="alert-danger" id="cpf_error"></p>
 				</div>
 				<div class="input-group mb-3">
 				  <div class="input-group-prepend">
@@ -133,7 +142,10 @@
 						</svg>
 				    </span>
 				  </div>
-				  <input type="name" name="nick"class="form-control" placeholder="Username">
+				  <input type="name" id="nick" name="nick"class="form-control" placeholder="Username">
+				</div>
+				<div class="mb-3">
+				  <p class="alert-danger" id="nick_error"></p>
 				</div>
 				<div class="input-group mb-3">
 				  <div class="input-group-prepend">
@@ -144,7 +156,10 @@
 						</svg>
 				    </span>
 				  </div>
-				  <input type="password" name="pass"class="form-control" placeholder="Password">
+				  <input type="password" id="pass" name="pass"class="form-control" placeholder="Password">
+				</div>
+				<div class="mb-3">
+				  <p class="alert-danger" id="pass_error"></p>
 				</div>
 				<div class="input-group mb-3">
 				  <div class="input-group-prepend">
@@ -155,12 +170,16 @@
 						</svg>
 				    </span>
 				  </div>
-				  <input type="password" name="cpass"class="form-control" placeholder="Confirm Password">
+				  <input type="password" id="cpass" name="cpass"class="form-control" placeholder="Confirm Password">
+				</div>
+				<div class="mb-3">
+				  <p class="alert-danger" id="cpass_error"></p>
 				</div>
 				<input class="btn btn-primary btn-lg" type="submit" name="register" value="Sign-In">
 			</form>
 		</div>
 	</div>
+	
 	<!--?php
 		include('footer.php');
 	?-->	

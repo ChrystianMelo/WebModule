@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	$connect = mysqli_connect("localhost","root","password", "webModule") OR DIE("Error connecting to the database");
 
 	$mailGet = "SELECT email FROM login";
@@ -76,8 +77,13 @@
 		if (strpos($nick, '@') !== false) $verificated = false;
 
 		if($verificated == true)
-			if(mysqli_query($connect, $sql))
-				$status = $success;
+			if(mysqli_query($connect, $sql)){
+				$idGet = "SELECT id FROM login WHERE email = '".$mail."'" ;
+				$idRow = mysqli_query($connect,$idGet);
+				$line = mysqli_fetch_array($idRow);
+				$_SESSION['userID'] = $line['id'];
+				$status = "<script>window.location = 'profile.php';</script>";
+			}
 			else
 				$status = $error;
 

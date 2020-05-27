@@ -1,4 +1,7 @@
-<?php?>
+<?php
+	include('session.php');
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +21,8 @@
 	?>
 
 	<div class="jumbotron">
-		<h3>Welcome!</h3>
+		<h3>Welcome: <i><?php echo $user_check;?></i></h3>
+		<button name="LOGOUT" onclick="location.href='logOut.php'">Log Out</button>
 	</div>
 
 	<?php

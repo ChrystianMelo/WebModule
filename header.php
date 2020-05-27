@@ -1,4 +1,6 @@
-<?php?>
+<?php
+	include('session.php');
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -68,8 +70,7 @@
 					</svg>
 				</button>
 				<div class="dropdown-content">
-					<a style="color:black;text-decoration: none;" href="signup.php">SignIn</a>
-					<a style="color:black;text-decoration: none;" href="signin.php">LogIn </a>
+					<?php echo $accStatus;?>
 				</div>
 			</div>
 			<!--p style="padding-left: 10px;"></p>

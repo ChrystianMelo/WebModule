@@ -1,4 +1,6 @@
 <?php
+	session_start();
+
 	$connect = mysqli_connect("localhost","root","password", "webModule") OR DIE("Error connecting to the database");
 
 	$mailGet = "SELECT email FROM login";
@@ -52,8 +54,13 @@
 			$passGet = "SELECT password FROM login WHERE ".$typeInput." = '".$found."'" ;
 			$passRow = mysqli_query($connect,$passGet);
 			$line = mysqli_fetch_array($passRow);
-			if($userpass == $line['password'])
-				$status = $success;
+			if($userpass == $line['password']){
+				$idGet = "SELECT id FROM login WHERE ".$typeInput." = '".$found."'" ;
+				$idRow = mysqli_query($connect,$idGet);
+				$line = mysqli_fetch_array($idRow);
+				$_SESSION['userID'] = $line['id'];
+				$status = "<script>window.location = 'profile.php';</script>";
+			}
 			else
 				$status = $error;
 		}

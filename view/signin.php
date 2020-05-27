@@ -1,33 +1,13 @@
 <?php
+	include '../db.php';
+
 	session_start();
 
-	$connect = mysqli_connect("localhost","root","password", "webModule") OR DIE("Error connecting to the database");
-
-	$mailGet = "SELECT email FROM login";
-	$mailRow = mysqli_query($connect,$mailGet);
-	$cpfGet = "SELECT cpf FROM login";
-	$cpfRow = mysqli_query($connect,$cpfGet);
-	$nickGet = "SELECT nickname FROM login";
-	$nickRow = mysqli_query($connect,$nickGet);
-
-	$success ="<div class='alert alert-success alert-dismissible fade show' role='alert'>
-				  <strong>Logged Succesfully!</strong>
-				  <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-				    <span aria-hidden='true'>&times;</span>
-				  </button>
-				</div>
-				";
-	$error ="<div class='alert alert-warning alert-dismissible fade show' role='alert'>
-				  <strong>Try Again!</strong>
-				  <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-				    <span aria-hidden='true'>&times;</span>
-				  </button>
-				</div>
-				";
+	$connect = mysqli_connect($server,$user,$pass,$db) OR DIE("Error connecting to the database");
 
 	if(isset($_GET["log"])){
 		$username = $_GET['username'];
-		$userpass = $_GET['userpass'];
+		$userpass = md5($_GET['userpass']);
 
 		$typeInput   = "";
 		$found       = "";
@@ -72,24 +52,23 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<link rel="stylesheet" type="text/css" href="css/patternStyle/style.css">
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-	<script src="js/jquery.js"></script>
-	<script src="js/bootstrap.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="js/myCodes/mainScreen.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/patternStyle/style.css">
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+	<script src="../js/jquery.js"></script>
+	<script src="../js/bootstrap.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../js/myCodes/mainScreen.js"></script>
 	<title>Company</title>
 </head>
 
 <body>
 	<?php
-		include('header.php');
+		include('../header.php');
 	?>
-	<?php
-		echo $status;
-	?>
-
 	<div class="jumbotron">
+		<?php
+			echo $status;
+		?>
 	  	<form class="form" id="log" method="GET">
 			<div class="mb-3">
 				<svg class="bi bi-person-circle" width="5em" height="5em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -128,10 +107,8 @@
 		</form>
 	</div>	
 	<?php
-		include('footer.php');
-	?>	
-	<?php
-		include('modal.php');
+		include('../footer.php');	
+		include('modal.php');	
 	?>
 </body>
 </html>

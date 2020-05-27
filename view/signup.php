@@ -1,35 +1,15 @@
 <?php
+	include '../db.php';
+	
 	session_start();
+
 	$connect = mysqli_connect("localhost","root","password", "webModule") OR DIE("Error connecting to the database");
-
-	$mailGet = "SELECT email FROM login";
-	$mailRow = mysqli_query($connect,$mailGet);
-	$cpfGet = "SELECT cpf FROM login";
-	$cpfRow = mysqli_query($connect,$cpfGet);
-	$nickGet = "SELECT nickname FROM login";
-	$nickRow = mysqli_query($connect,$nickGet);
-
-	$success ="<div class='alert alert-success alert-dismissible fade show' role='alert'>
-				  <strong>Added Succesfully!</strong>
-				  <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-				    <span aria-hidden='true'>&times;</span>
-				  </button>
-				</div>
-				";
-	$error ="<div class='alert alert-warning alert-dismissible fade show' role='alert'>
-				  <strong>Try Again!</strong>
-				  <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-				    <span aria-hidden='true'>&times;</span>
-				  </button>
-				</div>
-				";
-
 
 	if(isset($_POST["sign"])) {
 		$name = $_POST['name'];
 		$mail = $_POST['mail'];
-		$pass = $_POST['pass'];
-		$cpass = $_POST['cpass'];
+		$pass = md5($_POST['pass']);
+		$cpass = md5($_POST['cpass']);
 		$cpf = $_POST['cpf'];
 		$nick = $_POST['nick'];
 
@@ -95,27 +75,23 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<link rel="stylesheet" type="text/css" href="css/patternStyle/style.css">
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-	<script src="js/jquery.js"></script>
-	<script src="js/bootstrap.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="js/myCodes/mainScreen.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/patternStyle/style.css">
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+	<script src="../js/jquery.js"></script>
+	<script src="../js/bootstrap.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../js/myCodes/mainScreen.js"></script>
 	<title>Company</title>
 </head>
 
 <body>
 	<?php
-		include('header.php');
+		include('../header.php');
 	?>
-	<?php
-		echo $status;
-	?>	
-	<!--div class="split left">
-	    <img class="d-block w-100 h-100" src="media/slides/slide3.jpg" alt="Ads">
-	</div-->
-
 	<div class="jumbotron">
+		<?php
+			echo $status;
+		?>	
 		<form class="form" id="sign" method="POST">
 			<div class="mb-3">
 				<svg class="bi bi-person-circle" width="5em" height="5em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -211,10 +187,8 @@
 	</div>
 	
 	<?php
-		include('footer.php');
-	?>	
-	<?php
-		include('modal.php');
+		include('../footer.php');	
+		include('modal.php');	
 	?>
 </body>
 </html>

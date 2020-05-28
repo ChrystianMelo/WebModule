@@ -3,12 +3,12 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <link rel="stylesheet" type="text/css" href="css/patternStyle/style.css">
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-  <script src="js/jquery.js"></script>
-  <script src="js/bootstrap.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="js/myCodes/mainScreen.js"></script>
+  <link rel="stylesheet" type="text/css" href="../css/patternStyle/style.css">
+  <link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+  <script src="../js/jquery.js"></script>
+  <script src="../js/bootstrap.js"></script>
+  <script src="../js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="../js/myCodes/mainScreen.js"></script>
 </head>
 <body>
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

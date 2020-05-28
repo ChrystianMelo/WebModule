@@ -3,17 +3,17 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<link rel="stylesheet" type="text/css" href="css/patternStyle/style.css">
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-	<script src="js/jquery.js"></script>
-	<script src="js/bootstrap.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="js/myCodes/mainScreen.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/patternStyle/style.css">
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+	<script src="../js/jquery.js"></script>
+	<script src="../js/bootstrap.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../js/myCodes/mainScreen.js"></script>
 	<title>Projects - Company</title>
 </head>
 <body>
 	<?php
-		include('header.php');
+		include('../header.php');
 	?>
 	<div class="jumbotron bg-secondary">
 		<h1 class="display-4">
@@ -22,7 +22,7 @@
 		<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
 			<div class="card-group">
 			  <div class="card">
-			    <img class="card-img-top" src="media/slides/info1.jpg" alt="Card image cap">
+			    <img class="card-img-top" src="../media/slides/info1.jpg" alt="Card image cap">
 			    <div class="card-body">
 			      <h5 class="card-title">Card title</h5>
 			      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -33,7 +33,7 @@
 			  </div>
 				<p style="padding-left: 10px;"></p>
 			  <div class="card">
-			    <img class="card-img-top" src="media/slides/info1.jpg" alt="Card image cap">
+			    <img class="card-img-top" src="../media/slides/info1.jpg" alt="Card image cap">
 			    <div class="card-body">
 			      <h5 class="card-title">Card title</h5>
 			      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
@@ -44,7 +44,7 @@
 			  </div>
 				<p style="padding-left: 10px;"></p>
 			  <div class="card">
-			    <img class="card-img-top" src="media/slides/info1.jpg" alt="Card image cap">
+			    <img class="card-img-top" src="../media/slides/info1.jpg" alt="Card image cap">
 			    <div class="card-body">
 			      <h5 class="card-title">Card title</h5>
 			      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
@@ -57,7 +57,7 @@
 			<br>
 			<div class="card-group">
 			  <div class="card">
-			    <img class="card-img-top" src="media/slides/info1.jpg" alt="Card image cap">
+			    <img class="card-img-top" src="../media/slides/info1.jpg" alt="Card image cap">
 			    <div class="card-body">
 			      <h5 class="card-title">Card title</h5>
 			      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -68,7 +68,7 @@
 			  </div>
 				<p style="padding-left: 10px;"></p>
 			  <div class="card">
-			    <img class="card-img-top" src="media/slides/info1.jpg" alt="Card image cap">
+			    <img class="card-img-top" src="../media/slides/info1.jpg" alt="Card image cap">
 			    <div class="card-body">
 			      <h5 class="card-title">Card title</h5>
 			      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
@@ -79,7 +79,7 @@
 			  </div>
 				<p style="padding-left: 10px;"></p>
 			  <div class="card">
-			    <img class="card-img-top" src="media/slides/info1.jpg" alt="Card image cap">
+			    <img class="card-img-top" src="../media/slides/info1.jpg" alt="Card image cap">
 			    <div class="card-body">
 			      <h5 class="card-title">Card title</h5>
 			      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
@@ -93,10 +93,8 @@
 	</div>
 	
 	<?php
-		include('footer.php');
-	?>	
-	<?php
-		include('modal.php');
+		include('../footer.php');	
+		include('modal.php');	
 	?>
 </body>
 </html>
